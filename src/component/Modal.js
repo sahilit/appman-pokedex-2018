@@ -8,12 +8,15 @@ const cuteImg = require('../cute.png')
 class Modal extends Component {
 
   state = {
-    searchText: '',
     filteredPokemonCards: []
   }
 
   componentDidMount = () => {
     this.setState({ filteredPokemonCards: this.props.pokemonCards })
+  }
+
+  componentWillReceiveProps = (newProps) => {
+    if (newProps.pokemonCards !== this.props.pokemonCards) this.componentDidMount()
   }
 
   cuteImoji = (happiness) => {
@@ -22,10 +25,6 @@ class Modal extends Component {
         <img src={cuteImg} alt="cuteImage" />
       )
     }
-  }
-
-  modalClick = (e) => {
-    e.preventDefault()
   }
 
   onSearch = (searchText) => {
@@ -42,9 +41,8 @@ class Modal extends Component {
     const { filteredPokemonCards } = this.state
 
     return (
-      // /onClick={() => this.props.onClose(false)}
-      <div className="modal" >
-        <div className="modal-container">
+      <div className="modal" onClick={() => this.props.onClose(false)}>
+        <div className="modal-container" onClick={e => e.stopPropagation()}>
           <SearchBar onChange={text => this.onSearch(text)} />
           <div className="pokemon-modal-list">
             {filteredPokemonCards.map((card, index) => {

@@ -37,7 +37,9 @@ class App extends Component {
   }
 
   addCard = (card) => {
-    this.setState({ savedPokemonCards: [...this.state.savedPokemonCards, card] })
+    this.setState({ savedPokemonCards: [...this.state.savedPokemonCards, card] }, () => 
+      this.setState({ pokemonCards: this.state.pokemonCards.filter(oldCard =>[...this.state.savedPokemonCards, card].indexOf(oldCard) < 0) })
+    )
   }
 
   removeCard = (card) => {

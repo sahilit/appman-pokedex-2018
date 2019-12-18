@@ -17,7 +17,6 @@ class List extends Component {
   render() {
     
     const { savedPokemonCards } = this.props
-    console.log(savedPokemonCards)
 
     if (savedPokemonCards.length <= 0) return <div />
 
