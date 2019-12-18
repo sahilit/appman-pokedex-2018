@@ -1,0 +1,42 @@
+.modal {
+  background: #000000a3;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.modal-container {
+  background: #fff;
+  box-shadow: 0 0 5px #474444;
+  border-radius: 8px;
+  margin: 4%;
+  height: 90%;
+}
+
+.pokemon-modal-list {
+  padding: 0 10px;
+  height: inherit;
+  overflow: auto;
+}
+
+.pokemon-modal-card {
+  background: #f3f4f7;
+  box-sizing: border-box;
+  box-shadow: 0 3px 10px #d5d6dc;
+  border: 1px solid #d5d6dc77;
+  display: flex;
+  padding: 20px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.pokemon-modal-card .level-tube {
+  width: 400px;
+}
+
+.add-Icon {
+  position: absolute;
+  right: 20px;
+  color: #ec5656;
+}
