@@ -36,6 +36,7 @@
 }
 
 .add-Icon {
+  cursor: pointer;
   position: absolute;
   right: 20px;
   color: #ec5656;

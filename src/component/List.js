@@ -1,34 +1,10 @@
 import React, { Component } from 'react'
 import './List.css'
 
-const COLORS = {
-  Psychic: "#f8a5c2",
-  Fighting: "#f0932b",
-  Fairy: "#c44569",
-  Normal: "#f6e58d",
-  Grass: "#badc58",
-  Metal: "#95afc0",
-  Water: "#3dc1d3",
-  Lightning: "#f9ca24",
-  Darkness: "#574b90",
-  Colorless: "#FFF",
-  Fire: "#eb4d4b"
-}
-
 const cuteImg = require('../cute.png')
 
-class App extends Component {
 
-  state = {
-    pokemonCards: []
-  }
-
-  componentDidMount = () => {
-    fetch('http://localhost:3030/api/cards')
-      .then(response => response.json())
-      .then(res => this.setState({ pokemonCards: res.cards }));
-  }
-
+class List extends Component {
 
   cuteImoji = () => {
     for (let i = 0; i < 5; i++) {
@@ -38,18 +14,18 @@ class App extends Component {
     }
   }
 
-
   render() {
     
-    const { pokemonCards } = this.state
-    console.log(pokemonCards)
+    const { savedPokemonCards } = this.props
+    console.log(savedPokemonCards)
 
-    if (pokemonCards.length <= 0) return <div />
+    if (savedPokemonCards.length <= 0) return <div />
 
     return (
       <div className="pokemon-list">
-        {pokemonCards.map((card, index) => (
+        {savedPokemonCards.map((card, index) => (
           <div key={index} className="pokemon-card">
+            <div className="remove-Icon" onClick={() => this.props.removeCard(card)}>X</div>
             <div className="pokemon-img">
               <img src={card.imageUrl} alt={card.name} />
             </div>
@@ -78,4 +54,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default List

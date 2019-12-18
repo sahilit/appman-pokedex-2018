@@ -3,3 +3,7 @@
   overflow: auto;
   width: 100%;
 }
+
+.App h1 {
+  text-align: center;
+}

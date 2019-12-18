@@ -7,16 +7,6 @@ const cuteImg = require('../cute.png')
 
 class Modal extends Component {
 
-  state = {
-    pokemonCards: []
-  }
-
-  componentDidMount = () => {
-    fetch('http://localhost:3030/api/cards')
-      .then(response => response.json())
-      .then(res => this.setState({ pokemonCards: res.cards }));
-  }
-
   cuteImoji = () => {
     for (let i = 0; i < 5; i++) {
       return (
@@ -32,16 +22,16 @@ class Modal extends Component {
 
   render() {
 
-    const { pokemonCards } = this.state
+    const { pokemonCards } = this.props
 
     return (
-      <div className="modal">
+      <div className="modal" onClick={() => this.props.onClose(false)}>
         <div className="modal-container">
           <SearchBar />
           <div className="pokemon-modal-list">
             {pokemonCards.map((card, index) => (
               <div key={index} className="pokemon-modal-card">
-                <div className="add-Icon">ADD</div>
+                <div className="add-Icon" onClick={() => this.props.addCard(card)}>ADD</div>
                 <div className="pokemon-img">
                   <img src={card.imageUrl} alt={card.name} />
                 </div>
