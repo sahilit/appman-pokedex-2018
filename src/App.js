@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import List from './component/List'
 import './App.css'
 
 const COLORS = {
@@ -19,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <List />
       </div>
     )
   }
