@@ -7,6 +7,15 @@ const cuteImg = require('../cute.png')
 
 class Modal extends Component {
 
+  state = {
+    searchText: '',
+    filteredPokemonCards: []
+  }
+
+  componentDidMount = () => {
+    this.setState({ filteredPokemonCards: this.props.pokemonCards })
+  }
+
   cuteImoji = () => {
     for (let i = 0; i < 5; i++) {
       return (
@@ -17,19 +26,28 @@ class Modal extends Component {
 
   modalClick = (e) => {
     e.preventDefault()
-    console.log('rr')
+  }
+
+  onSearch = (searchText) => {
+    const cards = this.props.pokemonCards
+    const filteredPokemonCards = cards.filter(card => (
+      card.name.toLowerCase().indexOf(searchText) >= 0 ||
+      card.type.toLowerCase().indexOf(searchText) >= 0
+    ))
+    this.setState({ filteredPokemonCards })
   }
 
   render() {
 
-    const { pokemonCards } = this.props
+    const { filteredPokemonCards } = this.state
 
     return (
-      <div className="modal" onClick={() => this.props.onClose(false)}>
+      // /onClick={() => this.props.onClose(false)}
+      <div className="modal" >
         <div className="modal-container">
-          <SearchBar />
+          <SearchBar onChange={text => this.onSearch(text)} />
           <div className="pokemon-modal-list">
-            {pokemonCards.map((card, index) => (
+            {filteredPokemonCards.map((card, index) => (
               <div key={index} className="pokemon-modal-card">
                 <div className="add-Icon" onClick={() => this.props.addCard(card)}>ADD</div>
                 <div className="pokemon-img">
