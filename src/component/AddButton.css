@@ -1,0 +1,19 @@
+.add-button {
+  background: #ec5656;
+  box-shadow: 0 0 5px #d9333387;
+  bottom: 0;
+  height: 60px;
+  position: absolute;
+  width: 100%;
+}
+
+.add-button div {
+  background: #ec5656;
+  color: #fff;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  font-size: 75px;
+  margin: -40px auto 0;
+  text-align: center;
+}
